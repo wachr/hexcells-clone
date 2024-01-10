@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { scale } from 'svelte/transition';
+	import AlmostHexagon from './almost-hexagon.svelte';
 	import Hexagon from './hexagon.svelte';
 	import Square from './square.svelte';
 </script>
@@ -26,6 +28,9 @@
 		y={100 + (250 / 4) * 3}
 		scale={250}
 	/>
+
+	<AlmostHexagon x={650} y={100} scale={250} />
+	<AlmostHexagon x={650 - (2 * (250 / 4))} y={100 + (3 * (250  / 4))} scale={250} />
 </svg>
 
 <footer>
@@ -67,5 +72,4 @@
 	#simple-grid :global(.hexagon):nth-of-type(5n) {
 		fill: lightsteelblue;
 	}
-
 </style>
