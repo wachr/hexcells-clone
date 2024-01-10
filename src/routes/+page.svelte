@@ -14,17 +14,17 @@
 	height="90vmin"
 >
 	<rect x="0" y="0" width="1000" height="1000" />
-	<Square x={100} y={100} side={250} />
-	<Hexagon x={100} y={100} side={250} />
+	<Square x={100} y={100} scale={250} />
+	<Hexagon x={100} y={100} scale={250} />
 	<Hexagon
 		x={100 + (250 / 4) * (2 + Math.sqrt(3)) - (250 / 4) * (2 - Math.sqrt(3))}
 		y={100}
-		side={250}
+		scale={250}
 	/>
 	<Hexagon
 		x={100 + ((250 / 4) * 2 - (250 / 4) * (2 - Math.sqrt(3)))}
 		y={100 + (250 / 4) * 3}
-		side={250}
+		scale={250}
 	/>
 </svg>
 
@@ -51,4 +51,21 @@
 		stroke: darkcyan;
 		stroke-width: 5px;
 	}
+
+	#simple-grid :global(.hexagon):nth-of-type(2n) {
+		fill: lightcyan;
+	}
+
+	#simple-grid :global(.hexagon):nth-of-type(3n) {
+		fill: paleturquoise;
+	}
+
+	#simple-grid :global(.hexagon):nth-of-type(4n) {
+		fill: cadetblue;
+	}
+
+	#simple-grid :global(.hexagon):nth-of-type(5n) {
+		fill: lightsteelblue;
+	}
+
 </style>
