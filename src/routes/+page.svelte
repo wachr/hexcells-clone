@@ -1,7 +1,13 @@
 <script lang="ts">
 	import AlmostHexagon from './almost-hexagon.svelte';
-	import Hexagon from './hexagon.svelte';
 	import Square from './square.svelte';
+
+	let size = 1000;
+	let unit = 10;
+	let pnt = size / unit;
+	let scale = 2 * pnt;
+
+	let squares = size / scale - 1;
 </script>
 
 <svg
@@ -14,34 +20,36 @@
 	width="90vmin"
 	height="90vmin"
 >
-	<rect x="0" y="0" width="1000" height="1000" />
+	<rect x="0" y="0" width={size} height={size} />
 
-	<Square x={100} y={100} scale={250} />
-	<Square x={350} y={100} scale={250} />
-	<Square x={600} y={100} scale={250} />
-	<Square x={100} y={350} scale={250} />
-	<Square x={350} y={350} scale={250} />
-	<Square x={600} y={350} scale={250} />
-	<Square x={100} y={600} scale={250} />
-	<Square x={350} y={600} scale={250} />
-	<Square x={600} y={600} scale={250} />
+	{#each Array(squares) as _, i}
+		{#each Array(squares) as _, j}
+			<Square x={pnt + i * scale} y={pnt + j * scale} {scale} />
+		{/each}
+	{/each}
 
-	<Hexagon x={100} y={100} scale={250} />
-	<Hexagon
-		x={100 + (250 / 4) * (2 + Math.sqrt(3)) - (250 / 4) * (2 - Math.sqrt(3))}
-		y={100}
-		scale={250}
-	/>
-	<Hexagon
-		x={100 + ((250 / 4) * 2 - (250 / 4) * (2 - Math.sqrt(3)))}
-		y={100 + (250 / 4) * 3}
-		scale={250}
-	/>
+	<AlmostHexagon x={pnt} y={pnt} {scale} />
+	<AlmostHexagon x={pnt + scale} y={pnt} {scale} />
+	<AlmostHexagon x={pnt + 2 * scale} y={pnt} {scale} />
+	<AlmostHexagon x={pnt + 3 * scale} y={pnt} {scale} />
 
-	<AlmostHexagon x={600} y={125} scale={250} />
-	<AlmostHexagon x={475} y={312.5} scale={250} />
-	<AlmostHexagon x={725} y={312.5} scale={250} />
+	<AlmostHexagon x={pnt + (1 / 2) * scale} y={pnt + (3 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + scale + (1 / 2) * scale} y={pnt + (3 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 2 * scale + (1 / 2) * scale} y={pnt + (3 / 4) * scale} {scale} />
 
+	<AlmostHexagon x={pnt} y={pnt + (6 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + scale} y={pnt + (6 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 2 * scale} y={pnt + (6 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 3 * scale} y={pnt + (6 / 4) * scale} {scale} />
+
+	<AlmostHexagon x={pnt + (1 / 2) * scale} y={pnt + (9 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + scale + (1 / 2) * scale} y={pnt + (9 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 2 * scale + (1 / 2) * scale} y={pnt + (9 / 4) * scale} {scale} />
+
+	<AlmostHexagon x={pnt} y={pnt + (12 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + scale} y={pnt + (12 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 2 * scale} y={pnt + (12 / 4) * scale} {scale} />
+	<AlmostHexagon x={pnt + 3 * scale} y={pnt + (12 / 4) * scale} {scale} />
 </svg>
 
 <footer>
@@ -73,18 +81,19 @@
 	}
 
 	#simple-grid :global(.hexagon):nth-of-type(2n) {
-		fill: lightcyan;
-	}
-
-	#simple-grid :global(.hexagon):nth-of-type(3n) {
 		fill: paleturquoise;
 	}
 
-	#simple-grid :global(.hexagon):nth-of-type(4n) {
-		fill: cadetblue;
+	#simple-grid :global(.hexagon):nth-of-type(3n) {
+		fill: lightsteelblue;
 	}
 
-	#simple-grid :global(.hexagon):nth-of-type(5n) {
-		fill: lightsteelblue;
+	#simple-grid :global(.hexagon):nth-of-type(4n) {
+		fill: lightblue;
+	}
+
+	#simple-grid :global(.hexagon):hover {
+		fill: cyan;
+		stroke: azure;
 	}
 </style>
