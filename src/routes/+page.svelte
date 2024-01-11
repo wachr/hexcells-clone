@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { scale } from 'svelte/transition';
 	import AlmostHexagon from './almost-hexagon.svelte';
 	import Hexagon from './hexagon.svelte';
 	import Square from './square.svelte';
@@ -16,7 +15,17 @@
 	height="90vmin"
 >
 	<rect x="0" y="0" width="1000" height="1000" />
+
 	<Square x={100} y={100} scale={250} />
+	<Square x={350} y={100} scale={250} />
+	<Square x={600} y={100} scale={250} />
+	<Square x={100} y={350} scale={250} />
+	<Square x={350} y={350} scale={250} />
+	<Square x={600} y={350} scale={250} />
+	<Square x={100} y={600} scale={250} />
+	<Square x={350} y={600} scale={250} />
+	<Square x={600} y={600} scale={250} />
+
 	<Hexagon x={100} y={100} scale={250} />
 	<Hexagon
 		x={100 + (250 / 4) * (2 + Math.sqrt(3)) - (250 / 4) * (2 - Math.sqrt(3))}
@@ -29,8 +38,10 @@
 		scale={250}
 	/>
 
-	<AlmostHexagon x={650} y={100} scale={250} />
-	<AlmostHexagon x={650 - (2 * (250 / 4))} y={100 + (3 * (250  / 4))} scale={250} />
+	<AlmostHexagon x={600} y={125} scale={250} />
+	<AlmostHexagon x={475} y={312.5} scale={250} />
+	<AlmostHexagon x={725} y={312.5} scale={250} />
+
 </svg>
 
 <footer>
@@ -49,6 +60,10 @@
 		fill: palevioletred;
 		stroke: darkorchid;
 		stroke-width: 5px;
+	}
+
+	#simple-grid :global(.square):nth-of-type(2n) {
+		fill: lightsalmon;
 	}
 
 	#simple-grid :global(.hexagon) {
